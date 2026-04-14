@@ -6,7 +6,6 @@ import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { LogOut, User as UserIcon, Menu, X } from "lucide-react"
 import { NotificationsCenter } from "./notifications-center"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileSidebar } from "./mobile-sidebar"
 import type { User } from "@supabase/supabase-js"
 
@@ -65,7 +64,6 @@ export function DashboardHeader({ user, profile }: DashboardHeaderProps) {
 
         {/* Actions */}
         <div className="flex items-center gap-2 md:gap-4">
-          <ThemeToggle />
           <NotificationsCenter />
           <div className="hidden items-center gap-2 md:flex">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
