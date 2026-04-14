@@ -12,13 +12,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
-  const { websiteId, websiteUrl, analysisType } = await req.json()
+  const { websiteId, websiteUrl, analysisType, websiteData } = await req.json()
 
   if (!websiteId || !websiteUrl || !analysisType) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
   }
 
-  // Create analysis record
+  // Create analysis record with scraped data if available
   const { data: analysis, error } = await supabase
     .from("analyses")
     .insert({
@@ -26,6 +26,7 @@ export async function POST(req: Request) {
       user_id: user.id,
       type: analysisType,
       status: "pending",
+      results: websiteData ? { scrapedData: websiteData } : null,
     })
     .select()
     .single()
@@ -40,5 +41,8 @@ export async function POST(req: Request) {
     .update({ status: "analyzing" })
     .eq("id", websiteId)
 
-  return NextResponse.json({ analysisId: analysis.id })
+  return NextResponse.json({ 
+    analysisId: analysis.id,
+    hasWebsiteData: !!websiteData 
+  })
 }

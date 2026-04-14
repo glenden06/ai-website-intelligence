@@ -3,12 +3,13 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Sparkles, LayoutDashboard, Globe, BarChart3, Settings, HelpCircle } from "lucide-react"
+import { Sparkles, LayoutDashboard, Globe, BarChart3, Settings, HelpCircle, Bell } from "lucide-react"
 
 const navigation = [
   { name: "Tableau de bord", href: "/dashboard", icon: LayoutDashboard },
   { name: "Sites web", href: "/dashboard/websites", icon: Globe },
   { name: "Statistiques", href: "/dashboard/analytics", icon: BarChart3 },
+  { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
   { name: "Parametres", href: "/dashboard/settings", icon: Settings },
 ]
 
@@ -31,7 +32,8 @@ export function DashboardSidebar() {
         {/* Navigation */}
         <nav className="flex-1 space-y-1 p-4">
           {navigation.map((item) => {
-            const isActive = pathname === item.href
+            const isActive = pathname === item.href || 
+              (item.href !== "/dashboard" && pathname.startsWith(item.href))
             return (
               <Link
                 key={item.name}
