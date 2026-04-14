@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Sparkles } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 const footerLinks = {
   product: [
@@ -28,11 +28,8 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Sparkles className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">WebIntel AI</span>
+            <Link href="/" className="mb-4 inline-block">
+              <Logo size="md" />
             </Link>
             <p className="mb-4 max-w-sm text-sm text-muted-foreground">
               Plateforme d&apos;intelligence web alimentee par l&apos;IA. Comprenez vos utilisateurs, detectez les problemes et surpassez vos concurrents.
@@ -94,7 +91,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} WebIntel AI. Tous droits reserves.
+            &copy; {new Date().getFullYear()} Insightrix. Tous droits reserves.
           </p>
         </div>
       </div>

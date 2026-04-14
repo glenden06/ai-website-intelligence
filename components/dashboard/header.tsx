@@ -4,9 +4,11 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
-import { LogOut, User as UserIcon, Menu, X } from "lucide-react"
+import { LogOut, User as UserIcon, Menu } from "lucide-react"
 import { NotificationsCenter } from "./notifications-center"
 import { MobileSidebar } from "./mobile-sidebar"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Logo } from "@/components/logo"
 import type { User } from "@supabase/supabase-js"
 
 interface Profile {
@@ -58,12 +60,13 @@ export function DashboardHeader({ user, profile }: DashboardHeaderProps) {
         </div>
 
         {/* Mobile title */}
-        <div className="flex items-center gap-2 md:hidden">
-          <span className="font-semibold text-primary">WebIntel AI</span>
+        <div className="md:hidden">
+          <Logo size="sm" />
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-2 md:gap-4">
+          <ThemeToggle />
           <NotificationsCenter />
           <div className="hidden items-center gap-2 md:flex">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">

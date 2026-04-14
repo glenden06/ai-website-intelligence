@@ -3,9 +3,10 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { X, LayoutDashboard, Globe, BarChart3, Settings, Bell, Zap } from "lucide-react"
+import { X, LayoutDashboard, Globe, BarChart3, Settings, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Logo } from "@/components/logo"
 
 interface MobileSidebarProps {
   isOpen: boolean
@@ -53,12 +54,7 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
       {/* Sidebar */}
       <div className="fixed inset-y-0 left-0 z-50 w-72 bg-card shadow-lg md:hidden">
         <div className="flex h-16 items-center justify-between border-b px-4">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Zap className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <span className="font-bold">WebIntel AI</span>
-          </div>
+          <Logo size="sm" />
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-5 w-5" />
           </Button>

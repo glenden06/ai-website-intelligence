@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Sparkles, LayoutDashboard, Globe, BarChart3, Settings, HelpCircle, Bell } from "lucide-react"
+import { LayoutDashboard, Globe, BarChart3, Settings, HelpCircle, Bell } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 const navigation = [
   { name: "Tableau de bord", href: "/dashboard", icon: LayoutDashboard },
@@ -20,12 +21,9 @@ export function DashboardSidebar() {
     <aside className="hidden w-64 shrink-0 border-r border-border bg-card lg:block">
       <div className="flex h-full flex-col">
         {/* Logo */}
-        <div className="flex h-16 items-center gap-2 border-b border-border px-6">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Sparkles className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="text-lg font-bold">WebIntel AI</span>
+        <div className="flex h-16 items-center border-b border-border px-4">
+          <Link href="/dashboard">
+            <Logo size="md" />
           </Link>
         </div>
 

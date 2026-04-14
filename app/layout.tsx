@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import { ToastProvider } from "@/components/ui/toast";
 import "./globals.css";
 
@@ -14,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WebIntel AI - Analyse intelligente de sites web",
+  title: "Insightrix - Intelligence Web Propulsee par l'IA",
   description:
-    "Plateforme SaaS d'analyse de sites web basée sur l'IA. Détectez les problèmes UX, bugs techniques et opportunités d'optimisation.",
+    "Plateforme SaaS d'analyse de sites web basee sur l'IA. Detectez les problemes UX, bugs techniques et opportunites d'optimisation.",
   keywords: [
     "analyse web",
     "UX",
@@ -43,11 +44,14 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

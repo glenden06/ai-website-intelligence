@@ -71,7 +71,7 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-red-500" />
               <div className="h-3 w-3 rounded-full bg-yellow-500" />
               <div className="h-3 w-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-sm text-muted-foreground">Tableau de bord WebIntel AI</span>
+              <span className="ml-2 text-sm text-muted-foreground">Tableau de bord Insightrix</span>
             </div>
             <div className="aspect-video bg-gradient-to-br from-muted/50 to-muted p-8">
               <div className="grid h-full grid-cols-3 gap-4">
