@@ -90,7 +90,7 @@ export default function AnalysisPage() {
       .eq("id", analysis.id)
 
     // Send initial message to start analysis
-    sendMessage({ text: `Please analyze the website: ${website.url}` })
+    sendMessage({ text: `Veuillez analyser le site web : ${website.url}` })
   }
 
   const saveResults = async () => {
@@ -146,9 +146,9 @@ export default function AnalysisPage() {
   if (!website || !analysis) {
     return (
       <div className="text-center">
-        <p className="text-muted-foreground">Analysis not found</p>
+        <p className="text-muted-foreground">Analyse introuvable</p>
         <Button asChild className="mt-4">
-          <Link href="/dashboard">Back to Dashboard</Link>
+          <Link href="/dashboard">Retour au tableau de bord</Link>
         </Button>
       </div>
     )
@@ -162,30 +162,37 @@ export default function AnalysisPage() {
       .join("")
   }
 
+  const typeLabels: Record<string, string> = {
+    ux: "UX",
+    bugs: "Bugs",
+    competitive: "Concurrentielle",
+    full: "Complete",
+  }
+
   return (
     <div className="space-y-6">
       <div>
         <Button variant="ghost" size="sm" asChild className="mb-2">
           <Link href={`/dashboard/websites/${params.id}`}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Website
+            Retour au site
           </Link>
         </Button>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold capitalize">{analysis.type} Analysis</h1>
+            <h1 className="text-2xl font-bold">Analyse {typeLabels[analysis.type] || analysis.type}</h1>
             <p className="text-sm text-muted-foreground">{website.name} - {website.url}</p>
           </div>
           <div className="flex items-center gap-2">
             {status === "streaming" ? (
               <span className="flex items-center gap-2 text-sm text-blue-600">
                 <RefreshCw className="h-4 w-4 animate-spin" />
-                Analyzing...
+                Analyse en cours...
               </span>
             ) : status === "ready" && messages.length > 0 ? (
               <span className="flex items-center gap-2 text-sm text-green-600">
                 <CheckCircle className="h-4 w-4" />
-                Complete
+                Terminee
               </span>
             ) : null}
           </div>
@@ -194,13 +201,13 @@ export default function AnalysisPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Analysis Results</CardTitle>
+          <CardTitle>Resultats de l&apos;analyse</CardTitle>
         </CardHeader>
         <CardContent>
           {messages.length === 0 && status !== "streaming" ? (
             <div className="flex flex-col items-center justify-center py-12">
               <Loader2 className="mb-4 h-8 w-8 animate-spin text-primary" />
-              <p className="text-muted-foreground">Starting analysis...</p>
+              <p className="text-muted-foreground">Demarrage de l&apos;analyse...</p>
             </div>
           ) : (
             <div className="prose prose-sm max-w-none dark:prose-invert">

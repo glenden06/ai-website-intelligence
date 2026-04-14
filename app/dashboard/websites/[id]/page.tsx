@@ -40,29 +40,37 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
   const analysisTypes = [
     {
       type: "ux",
-      name: "UX Analysis",
-      description: "Analyze user experience and navigation patterns",
+      name: "Analyse UX",
+      description: "Analysez l'experience utilisateur et les patterns de navigation",
       icon: MousePointerClick,
     },
     {
       type: "bugs",
-      name: "Bug Detection",
-      description: "Find broken links, errors, and technical issues",
+      name: "Detection de bugs",
+      description: "Trouvez les liens casses, erreurs et problemes techniques",
       icon: Bug,
     },
     {
       type: "competitive",
-      name: "Competitive Analysis",
-      description: "Compare with competitors and market trends",
+      name: "Analyse concurrentielle",
+      description: "Comparez avec la concurrence et les tendances du marche",
       icon: TrendingUp,
     },
     {
       type: "full",
-      name: "Full Analysis",
-      description: "Complete analysis with all features",
+      name: "Analyse complete",
+      description: "Analyse complete avec toutes les fonctionnalites",
       icon: Sparkles,
     },
   ]
+
+  const statusLabels: Record<string, string> = {
+    completed: "Termine",
+    analyzing: "En cours",
+    running: "En cours",
+    error: "Erreur",
+    pending: "En attente",
+  }
 
   return (
     <div className="space-y-6">
@@ -71,7 +79,7 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
           <Button variant="ghost" size="sm" asChild className="mb-2">
             <Link href="/dashboard">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              Retour au tableau de bord
             </Link>
           </Button>
           <div className="flex items-center gap-3">
@@ -95,7 +103,7 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                   : "bg-gray-100 text-gray-700"
           }`}
         >
-          {website.status}
+          {statusLabels[website.status] || website.status}
         </span>
       </div>
 
@@ -120,14 +128,14 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                 {latestAnalysis ? (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Last run:</span>
+                      <span className="text-muted-foreground">Derniere execution :</span>
                       <span>
-                        {new Date(latestAnalysis.created_at).toLocaleDateString()}
+                        {new Date(latestAnalysis.created_at).toLocaleDateString("fr-FR")}
                       </span>
                     </div>
                     {latestAnalysis.score !== null && (
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">Score:</span>
+                        <span className="text-muted-foreground">Score :</span>
                         <span className="font-semibold text-primary">
                           {latestAnalysis.score}/100
                         </span>
@@ -144,7 +152,7 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                           <Link
                             href={`/dashboard/websites/${website.id}/analysis/${latestAnalysis.id}`}
                           >
-                            View Results
+                            Voir les resultats
                           </Link>
                         </Button>
                       )}
@@ -153,7 +161,7 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                 ) : (
                   <div className="space-y-3">
                     <p className="text-sm text-muted-foreground">
-                      No analysis run yet
+                      Aucune analyse effectuee
                     </p>
                     <AnalyzeButton
                       websiteId={website.id}
@@ -171,13 +179,13 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
       {/* Analysis History */}
       <Card>
         <CardHeader>
-          <CardTitle>Analysis History</CardTitle>
-          <CardDescription>Previous analyses for this website</CardDescription>
+          <CardTitle>Historique des analyses</CardTitle>
+          <CardDescription>Analyses precedentes pour ce site</CardDescription>
         </CardHeader>
         <CardContent>
           {!analyses || analyses.length === 0 ? (
             <p className="py-8 text-center text-sm text-muted-foreground">
-              No analyses yet. Run your first analysis above.
+              Aucune analyse. Lancez votre premiere analyse ci-dessus.
             </p>
           ) : (
             <div className="space-y-3">
@@ -188,10 +196,10 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                 >
                   <div className="flex items-center gap-3">
                     <span className="rounded bg-muted px-2 py-1 text-xs font-medium capitalize">
-                      {analysis.type}
+                      {analysis.type === "ux" ? "UX" : analysis.type === "bugs" ? "Bugs" : analysis.type === "competitive" ? "Concurrence" : "Complet"}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      {new Date(analysis.created_at).toLocaleString()}
+                      {new Date(analysis.created_at).toLocaleString("fr-FR")}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -209,14 +217,14 @@ export default async function WebsiteDetailPage({ params }: WebsiteDetailPagePro
                               : "bg-gray-100 text-gray-700"
                       }`}
                     >
-                      {analysis.status}
+                      {statusLabels[analysis.status] || analysis.status}
                     </span>
                     {analysis.status === "completed" && (
                       <Button variant="ghost" size="sm" asChild>
                         <Link
                           href={`/dashboard/websites/${website.id}/analysis/${analysis.id}`}
                         >
-                          View
+                          Voir
                         </Link>
                       </Button>
                     )}

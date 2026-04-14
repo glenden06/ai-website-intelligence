@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils"
 import { Sparkles, LayoutDashboard, Globe, BarChart3, Settings, HelpCircle } from "lucide-react"
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Websites", href: "/dashboard/websites", icon: Globe },
-  { name: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Tableau de bord", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Sites web", href: "/dashboard/websites", icon: Globe },
+  { name: "Statistiques", href: "/dashboard/analytics", icon: BarChart3 },
+  { name: "Parametres", href: "/dashboard/settings", icon: Settings },
 ]
 
 export function DashboardSidebar() {
@@ -57,7 +57,7 @@ export function DashboardSidebar() {
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             <HelpCircle className="h-5 w-5" />
-            Help & Support
+            Aide et support
           </Link>
         </div>
       </div>

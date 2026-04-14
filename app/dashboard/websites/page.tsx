@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Globe, Plus, Trash2 } from "lucide-react"
+import { Globe, Plus } from "lucide-react"
 import Link from "next/link"
 import { DeleteWebsiteButton } from "@/components/dashboard/delete-website-button"
 
@@ -18,17 +18,24 @@ export default async function WebsitesPage() {
     .eq("user_id", user?.id)
     .order("created_at", { ascending: false })
 
+  const statusLabels: Record<string, string> = {
+    completed: "Termine",
+    analyzing: "En cours",
+    error: "Erreur",
+    pending: "En attente",
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Websites</h1>
-          <p className="text-muted-foreground">Manage all your monitored websites</p>
+          <h1 className="text-2xl font-bold">Sites web</h1>
+          <p className="text-muted-foreground">Gerez tous vos sites surveilles</p>
         </div>
         <Button asChild>
           <Link href="/dashboard/websites/new">
             <Plus className="mr-2 h-4 w-4" />
-            Add Website
+            Ajouter un site
           </Link>
         </Button>
       </div>
@@ -37,14 +44,14 @@ export default async function WebsitesPage() {
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-12">
             <Globe className="mb-4 h-12 w-12 text-muted-foreground/50" />
-            <h3 className="mb-2 text-lg font-semibold">No websites yet</h3>
+            <h3 className="mb-2 text-lg font-semibold">Aucun site web</h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Add your first website to start getting AI-powered insights.
+              Ajoutez votre premier site pour commencer a obtenir des insights IA.
             </p>
             <Button asChild>
               <Link href="/dashboard/websites/new">
                 <Plus className="mr-2 h-4 w-4" />
-                Add Your First Website
+                Ajouter votre premier site
               </Link>
             </Button>
           </CardContent>
@@ -82,17 +89,17 @@ export default async function WebsitesPage() {
                             : "bg-gray-100 text-gray-700"
                     }`}
                   >
-                    {website.status}
+                    {statusLabels[website.status] || website.status}
                   </span>
                   <Button variant="outline" size="sm" asChild>
                     <Link href={`/dashboard/websites/${website.id}`}>
-                      View Details
+                      Voir les details
                     </Link>
                   </Button>
                 </div>
                 {website.last_analyzed_at && (
                   <p className="mt-3 text-xs text-muted-foreground">
-                    Last analyzed: {new Date(website.last_analyzed_at).toLocaleDateString()}
+                    Derniere analyse : {new Date(website.last_analyzed_at).toLocaleDateString("fr-FR")}
                   </p>
                 )}
               </CardContent>

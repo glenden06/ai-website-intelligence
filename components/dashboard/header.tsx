@@ -33,10 +33,10 @@ export function DashboardHeader({ user, profile }: DashboardHeaderProps) {
     <header className="flex h-16 items-center justify-between border-b border-border bg-card px-6">
       <div>
         <h1 className="text-lg font-semibold">
-          Welcome back, {profile?.full_name || user.email?.split("@")[0]}
+          Bienvenue, {profile?.full_name || user.email?.split("@")[0]}
         </h1>
         <p className="text-sm text-muted-foreground">
-          Plan: <span className="capitalize">{profile?.plan || "free"}</span>
+          Plan : <span className="capitalize">{profile?.plan || "gratuit"}</span>
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export function DashboardHeader({ user, profile }: DashboardHeaderProps) {
         </div>
         <Button variant="ghost" size="icon" onClick={handleSignOut}>
           <LogOut className="h-5 w-5" />
-          <span className="sr-only">Sign out</span>
+          <span className="sr-only">Deconnexion</span>
         </Button>
       </div>
     </header>

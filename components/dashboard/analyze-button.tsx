@@ -32,7 +32,7 @@ export function AnalyzeButton({ websiteId, websiteUrl, analysisType }: AnalyzeBu
       })
 
       if (!response.ok) {
-        throw new Error("Failed to start analysis")
+        throw new Error("Echec du demarrage de l'analyse")
       }
 
       const data = await response.json()
@@ -41,7 +41,7 @@ export function AnalyzeButton({ websiteId, websiteUrl, analysisType }: AnalyzeBu
       router.push(`/dashboard/websites/${websiteId}/analysis/${data.analysisId}`)
       router.refresh()
     } catch (error) {
-      console.error("Analysis error:", error)
+      console.error("Erreur d'analyse:", error)
       setIsLoading(false)
     }
   }
@@ -55,12 +55,12 @@ export function AnalyzeButton({ websiteId, websiteUrl, analysisType }: AnalyzeBu
       {isLoading ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Starting...
+          Demarrage...
         </>
       ) : (
         <>
           <Play className="mr-2 h-4 w-4" />
-          Run Analysis
+          Lancer l&apos;analyse
         </>
       )}
     </Button>

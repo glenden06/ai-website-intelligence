@@ -56,9 +56,9 @@ export default function SignUpPage() {
               <Sparkles className="h-6 w-6 text-primary-foreground" />
             </div>
           </Link>
-          <CardTitle className="text-2xl">Create your account</CardTitle>
+          <CardTitle className="text-2xl">Creer votre compte</CardTitle>
           <CardDescription>
-            Get started with WebIntel AI for free
+            Commencez avec WebIntel AI gratuitement
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSignUp}>
@@ -69,11 +69,11 @@ export default function SignUpPage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
+              <Label htmlFor="fullName">Nom complet</Label>
               <Input
                 id="fullName"
                 type="text"
-                placeholder="John Doe"
+                placeholder="Jean Dupont"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
@@ -85,7 +85,7 @@ export default function SignUpPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="vous@exemple.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -93,11 +93,11 @@ export default function SignUpPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Mot de passe</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Choose a strong password"
+                placeholder="Choisissez un mot de passe fort"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -111,16 +111,16 @@ export default function SignUpPage() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Creating account...
+                  Creation du compte...
                 </>
               ) : (
-                "Create Account"
+                "Creer mon compte"
               )}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
-              Already have an account?{" "}
+              Deja un compte ?{" "}
               <Link href="/auth/login" className="text-primary hover:underline">
-                Sign in
+                Se connecter
               </Link>
             </p>
           </CardFooter>

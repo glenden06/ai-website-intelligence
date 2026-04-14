@@ -29,7 +29,7 @@ export default function NewWebsitePage() {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      setError("You must be logged in to add a website")
+      setError("Vous devez etre connecte pour ajouter un site web")
       setIsLoading(false)
       return
     }
@@ -43,7 +43,7 @@ export default function NewWebsitePage() {
     try {
       new URL(validUrl)
     } catch {
-      setError("Please enter a valid URL")
+      setError("Veuillez entrer une URL valide")
       setIsLoading(false)
       return
     }
@@ -71,7 +71,7 @@ export default function NewWebsitePage() {
         <Button variant="ghost" size="sm" asChild>
           <Link href="/dashboard">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Dashboard
+            Retour au tableau de bord
           </Link>
         </Button>
       </div>
@@ -81,9 +81,9 @@ export default function NewWebsitePage() {
           <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
             <Globe className="h-6 w-6 text-primary" />
           </div>
-          <CardTitle>Add a New Website</CardTitle>
+          <CardTitle>Ajouter un nouveau site web</CardTitle>
           <CardDescription>
-            Enter your website details to start analyzing with AI
+            Entrez les details de votre site pour commencer l&apos;analyse IA
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
@@ -94,43 +94,43 @@ export default function NewWebsitePage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="name">Website Name</Label>
+              <Label htmlFor="name">Nom du site</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="My Awesome Website"
+                placeholder="Mon super site"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
                 disabled={isLoading}
               />
               <p className="text-xs text-muted-foreground">
-                A friendly name to identify your website
+                Un nom convivial pour identifier votre site
               </p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="url">Website URL</Label>
+              <Label htmlFor="url">URL du site</Label>
               <Input
                 id="url"
                 type="text"
-                placeholder="https://example.com"
+                placeholder="https://exemple.com"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 required
                 disabled={isLoading}
               />
               <p className="text-xs text-muted-foreground">
-                The full URL of your website including https://
+                L&apos;URL complete de votre site incluant https://
               </p>
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Adding Website...
+                  Ajout en cours...
                 </>
               ) : (
-                "Add Website"
+                "Ajouter le site"
               )}
             </Button>
           </CardContent>

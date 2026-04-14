@@ -48,9 +48,9 @@ export default function LoginPage() {
               <Sparkles className="h-6 w-6 text-primary-foreground" />
             </div>
           </Link>
-          <CardTitle className="text-2xl">Welcome back</CardTitle>
+          <CardTitle className="text-2xl">Bon retour parmi nous</CardTitle>
           <CardDescription>
-            Sign in to your account to continue
+            Connectez-vous a votre compte pour continuer
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleLogin}>
@@ -65,7 +65,7 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="vous@exemple.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -73,11 +73,11 @@ export default function LoginPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Mot de passe</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Your password"
+                placeholder="Votre mot de passe"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -90,16 +90,16 @@ export default function LoginPage() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
+                  Connexion en cours...
                 </>
               ) : (
-                "Sign In"
+                "Se connecter"
               )}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
-              Don&apos;t have an account?{" "}
+              Pas encore de compte ?{" "}
               <Link href="/auth/sign-up" className="text-primary hover:underline">
-                Sign up
+                Creer un compte
               </Link>
             </p>
           </CardFooter>

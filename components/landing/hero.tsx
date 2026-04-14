@@ -17,33 +17,32 @@ export function Hero() {
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm">
             <Zap className="h-4 w-4 text-primary" />
-            <span className="text-muted-foreground">AI-Powered Website Analysis</span>
+            <span className="text-muted-foreground">Analyse de site web propulsee par l&apos;IA</span>
           </div>
 
           {/* Headline */}
           <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-            Understand Your Website{" "}
-            <span className="text-primary">Like Never Before</span>
+            Comprenez votre site web{" "}
+            <span className="text-primary">comme jamais auparavant</span>
           </h1>
 
           {/* Subheadline */}
           <p className="mx-auto mb-8 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
-            Get deep insights into user experience, detect bugs automatically, and stay
-            ahead of competitors with AI-powered analysis that works 24/7.
+            Obtenez des insights approfondis sur l&apos;experience utilisateur, detectez les bugs automatiquement et gardez une longueur d&apos;avance sur vos concurrents grace a une analyse IA 24h/24.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="xl" asChild>
               <Link href="/auth/sign-up">
-                Start Free Trial
+                Essai gratuit
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="xl" variant="outline" asChild>
               <Link href="#how-it-works">
                 <Play className="mr-2 h-5 w-5" />
-                See How It Works
+                Comment ca marche
               </Link>
             </Button>
           </div>
@@ -52,15 +51,15 @@ export function Hero() {
           <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-primary" />
-              <span>No credit card required</span>
+              <span>Sans carte bancaire</span>
             </div>
             <div className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-primary" />
-              <span>5-minute setup</span>
+              <span>Configuration en 5 minutes</span>
             </div>
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary" />
-              <span>Real-time insights</span>
+              <span>Insights en temps reel</span>
             </div>
           </div>
         </div>
@@ -72,7 +71,7 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-red-500" />
               <div className="h-3 w-3 rounded-full bg-yellow-500" />
               <div className="h-3 w-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-sm text-muted-foreground">WebIntel AI Dashboard</span>
+              <span className="ml-2 text-sm text-muted-foreground">Tableau de bord WebIntel AI</span>
             </div>
             <div className="aspect-video bg-gradient-to-br from-muted/50 to-muted p-8">
               <div className="grid h-full grid-cols-3 gap-4">

@@ -3,21 +3,21 @@ import { Sparkles } from "lucide-react"
 
 const footerLinks = {
   product: [
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "How it Works", href: "#how-it-works" },
+    { name: "Fonctionnalites", href: "#features" },
+    { name: "Tarifs", href: "#pricing" },
+    { name: "Comment ca marche", href: "#how-it-works" },
     { name: "Changelog", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
+    { name: "A propos", href: "#" },
     { name: "Blog", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "Carrieres", href: "#" },
     { name: "Contact", href: "#" },
   ],
   legal: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
+    { name: "Politique de confidentialite", href: "#" },
+    { name: "Conditions d'utilisation", href: "#" },
+    { name: "Politique de cookies", href: "#" },
   ],
 }
 
@@ -35,14 +35,13 @@ export function Footer() {
               <span className="text-xl font-bold">WebIntel AI</span>
             </Link>
             <p className="mb-4 max-w-sm text-sm text-muted-foreground">
-              AI-powered website intelligence platform. Understand your users, detect
-              issues, and outperform competitors.
+              Plateforme d&apos;intelligence web alimentee par l&apos;IA. Comprenez vos utilisateurs, detectez les problemes et surpassez vos concurrents.
             </p>
           </div>
 
           {/* Product Links */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Product</h3>
+            <h3 className="mb-4 text-sm font-semibold">Produit</h3>
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
@@ -59,7 +58,7 @@ export function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Company</h3>
+            <h3 className="mb-4 text-sm font-semibold">Entreprise</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -95,7 +94,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} WebIntel AI. All rights reserved.
+            &copy; {new Date().getFullYear()} WebIntel AI. Tous droits reserves.
           </p>
         </div>
       </div>

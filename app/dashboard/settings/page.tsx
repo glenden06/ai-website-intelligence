@@ -18,6 +18,12 @@ export default function SettingsPage() {
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
   const router = useRouter()
 
+  const planLabels: Record<string, string> = {
+    free: "Gratuit",
+    pro: "Pro",
+    enterprise: "Entreprise",
+  }
+
   useEffect(() => {
     async function loadProfile() {
       const supabase = createClient()
@@ -54,7 +60,7 @@ export default function SettingsPage() {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      setMessage({ type: "error", text: "You must be logged in" })
+      setMessage({ type: "error", text: "Vous devez etre connecte" })
       setIsSaving(false)
       return
     }
@@ -70,7 +76,7 @@ export default function SettingsPage() {
     if (error) {
       setMessage({ type: "error", text: error.message })
     } else {
-      setMessage({ type: "success", text: "Profile updated successfully" })
+      setMessage({ type: "success", text: "Profil mis a jour avec succes" })
       router.refresh()
     }
 
@@ -88,8 +94,8 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and preferences</p>
+        <h1 className="text-2xl font-bold">Parametres</h1>
+        <p className="text-muted-foreground">Gerez votre compte et vos preferences</p>
       </div>
 
       {/* Profile Settings */}
@@ -100,8 +106,8 @@ export default function SettingsPage() {
               <User className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle>Profile</CardTitle>
-              <CardDescription>Update your personal information</CardDescription>
+              <CardTitle>Profil</CardTitle>
+              <CardDescription>Mettez a jour vos informations personnelles</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -118,7 +124,7 @@ export default function SettingsPage() {
             </div>
           )}
           <div className="space-y-2">
-            <Label htmlFor="fullName">Full Name</Label>
+            <Label htmlFor="fullName">Nom complet</Label>
             <Input
               id="fullName"
               type="text"
@@ -130,17 +136,17 @@ export default function SettingsPage() {
             <Label htmlFor="email">Email</Label>
             <Input id="email" type="email" value={email} disabled />
             <p className="text-xs text-muted-foreground">
-              Email cannot be changed
+              L&apos;email ne peut pas etre modifie
             </p>
           </div>
           <Button onClick={handleSave} disabled={isSaving}>
             {isSaving ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Saving...
+                Enregistrement...
               </>
             ) : (
-              "Save Changes"
+              "Enregistrer les modifications"
             )}
           </Button>
         </CardContent>
@@ -154,24 +160,24 @@ export default function SettingsPage() {
               <CreditCard className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle>Subscription</CardTitle>
-              <CardDescription>Manage your plan and billing</CardDescription>
+              <CardTitle>Abonnement</CardTitle>
+              <CardDescription>Gerez votre plan et votre facturation</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-between rounded-lg border border-border p-4">
             <div>
-              <p className="font-medium capitalize">{plan} Plan</p>
+              <p className="font-medium">Plan {planLabels[plan] || plan}</p>
               <p className="text-sm text-muted-foreground">
                 {plan === "free"
-                  ? "1 website, weekly analysis"
+                  ? "1 site web, analyse hebdomadaire"
                   : plan === "pro"
-                    ? "10 websites, daily analysis"
-                    : "Unlimited websites, real-time analysis"}
+                    ? "10 sites web, analyse quotidienne"
+                    : "Sites illimites, analyse en temps reel"}
               </p>
             </div>
-            <Button variant="outline">Upgrade Plan</Button>
+            <Button variant="outline">Changer de plan</Button>
           </div>
         </CardContent>
       </Card>
@@ -184,13 +190,13 @@ export default function SettingsPage() {
               <Shield className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle>Security</CardTitle>
-              <CardDescription>Manage your security settings</CardDescription>
+              <CardTitle>Securite</CardTitle>
+              <CardDescription>Gerez vos parametres de securite</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <Button variant="outline">Change Password</Button>
+          <Button variant="outline">Changer le mot de passe</Button>
         </CardContent>
       </Card>
     </div>

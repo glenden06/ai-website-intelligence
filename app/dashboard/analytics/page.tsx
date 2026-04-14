@@ -44,25 +44,25 @@ export default async function AnalyticsPage() {
 
   const stats = [
     {
-      name: "UX Analysis",
+      name: "Analyse UX",
       count: analysesByType.ux.length,
       avgScore: getAverageScore(analysesByType.ux),
       trend: getTrend(analysesByType.ux),
     },
     {
-      name: "Bug Detection",
+      name: "Detection de bugs",
       count: analysesByType.bugs.length,
       avgScore: getAverageScore(analysesByType.bugs),
       trend: getTrend(analysesByType.bugs),
     },
     {
-      name: "Competitive Analysis",
+      name: "Analyse concurrentielle",
       count: analysesByType.competitive.length,
       avgScore: getAverageScore(analysesByType.competitive),
       trend: getTrend(analysesByType.competitive),
     },
     {
-      name: "Full Analysis",
+      name: "Analyse complete",
       count: analysesByType.full.length,
       avgScore: getAverageScore(analysesByType.full),
       trend: getTrend(analysesByType.full),
@@ -72,8 +72,8 @@ export default async function AnalyticsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Analytics</h1>
-        <p className="text-muted-foreground">Overview of all your website analyses</p>
+        <h1 className="text-2xl font-bold">Statistiques</h1>
+        <p className="text-muted-foreground">Vue d&apos;ensemble de toutes vos analyses</p>
       </div>
 
       {/* Stats Grid */}
@@ -90,7 +90,7 @@ export default async function AnalyticsPage() {
                     {stat.avgScore !== null ? `${stat.avgScore}` : "-"}
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    {stat.count} {stat.count === 1 ? "analysis" : "analyses"}
+                    {stat.count} {stat.count === 1 ? "analyse" : "analyses"}
                   </p>
                 </div>
                 <div
@@ -119,16 +119,16 @@ export default async function AnalyticsPage() {
       {/* Recent Analyses */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Analyses</CardTitle>
-          <CardDescription>Your latest completed analyses across all websites</CardDescription>
+          <CardTitle>Analyses recentes</CardTitle>
+          <CardDescription>Vos dernieres analyses terminees sur tous les sites</CardDescription>
         </CardHeader>
         <CardContent>
           {!analyses || analyses.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12">
               <BarChart3 className="mb-4 h-12 w-12 text-muted-foreground/50" />
-              <h3 className="mb-2 text-lg font-semibold">No analytics yet</h3>
+              <h3 className="mb-2 text-lg font-semibold">Pas encore de statistiques</h3>
               <p className="text-sm text-muted-foreground">
-                Run some analyses to see your analytics data here.
+                Lancez des analyses pour voir vos statistiques ici.
               </p>
             </div>
           ) : (
@@ -139,11 +139,11 @@ export default async function AnalyticsPage() {
                   className="flex items-center justify-between rounded-lg border border-border p-3"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium capitalize text-primary">
-                      {analysis.type}
+                    <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                      {analysis.type === "ux" ? "UX" : analysis.type === "bugs" ? "Bugs" : analysis.type === "competitive" ? "Concurrence" : "Complet"}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      {new Date(analysis.created_at).toLocaleDateString()}
+                      {new Date(analysis.created_at).toLocaleDateString("fr-FR")}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">

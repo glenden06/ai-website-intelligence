@@ -4,30 +4,30 @@ const steps = [
   {
     number: "01",
     icon: Globe,
-    title: "Add Your Website",
+    title: "Ajoutez votre site web",
     description:
-      "Simply enter your website URL. No code installation or technical setup required.",
+      "Entrez simplement l'URL de votre site. Aucune installation de code ni configuration technique requise.",
   },
   {
     number: "02",
     icon: Cpu,
-    title: "AI Analysis Begins",
+    title: "L'analyse IA demarre",
     description:
-      "Our AI crawls your site, analyzing UX patterns, detecting issues, and gathering competitive intelligence.",
+      "Notre IA explore votre site, analyse les patterns UX, detecte les problemes et collecte des informations concurrentielles.",
   },
   {
     number: "03",
     icon: BarChart3,
-    title: "Review Insights",
+    title: "Consultez les insights",
     description:
-      "Access your personalized dashboard with scores, detailed reports, and prioritized recommendations.",
+      "Accedez a votre tableau de bord personnalise avec des scores, des rapports detailles et des recommandations priorisees.",
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Take Action",
+    title: "Passez a l'action",
     description:
-      "Implement suggested improvements and watch your website performance soar.",
+      "Implementez les ameliorations suggerees et observez la performance de votre site s'envoler.",
   },
 ]
 
@@ -37,10 +37,10 @@ export function HowItWorks() {
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-16 max-w-2xl text-center">
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            Get Started in Minutes
+            Demarrez en quelques minutes
           </h2>
           <p className="text-pretty text-lg text-muted-foreground">
-            No complex setup required. Add your website and let AI do the heavy lifting.
+            Aucune configuration complexe requise. Ajoutez votre site et laissez l&apos;IA faire le travail.
           </p>
         </div>
 

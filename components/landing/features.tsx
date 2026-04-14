@@ -4,27 +4,27 @@ import { MousePointerClick, Bug, TrendingUp, Lightbulb } from "lucide-react"
 const features = [
   {
     icon: MousePointerClick,
-    title: "UX Analysis",
+    title: "Analyse UX",
     description:
-      "Understand how users navigate your site. Identify friction points, optimize conversion funnels, and improve user journeys with AI-powered insights.",
+      "Comprenez comment les utilisateurs naviguent sur votre site. Identifiez les points de friction, optimisez les tunnels de conversion et ameliorez les parcours utilisateurs grace a des insights alimentes par l'IA.",
   },
   {
     icon: Bug,
-    title: "Bug Detection",
+    title: "Detection de bugs",
     description:
-      "Automatically detect broken links, 404 errors, performance issues, and technical problems before your users encounter them.",
+      "Detectez automatiquement les liens casses, les erreurs 404, les problemes de performance et les defauts techniques avant que vos utilisateurs ne les rencontrent.",
   },
   {
     icon: TrendingUp,
-    title: "Competitive Analysis",
+    title: "Analyse concurrentielle",
     description:
-      "Monitor competitor websites for changes, compare offerings, and stay ahead of market trends with continuous surveillance.",
+      "Surveillez les sites web de vos concurrents pour detecter les changements, comparez les offres et restez en avance sur les tendances du marche.",
   },
   {
     icon: Lightbulb,
-    title: "AI Recommendations",
+    title: "Recommandations IA",
     description:
-      "Receive actionable suggestions prioritized by impact. Our AI analyzes patterns and recommends specific optimizations.",
+      "Recevez des suggestions actionnables priorisees par impact. Notre IA analyse les patterns et recommande des optimisations specifiques.",
   },
 ]
 
@@ -34,11 +34,10 @@ export function Features() {
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-16 max-w-2xl text-center">
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            Everything You Need to Optimize Your Website
+            Tout ce dont vous avez besoin pour optimiser votre site
           </h2>
           <p className="text-pretty text-lg text-muted-foreground">
-            Powerful AI tools working together to give you complete visibility into your
-            website&apos;s performance and user experience.
+            Des outils IA puissants qui travaillent ensemble pour vous donner une visibilite complete sur la performance et l&apos;experience utilisateur de votre site.
           </p>
         </div>
 

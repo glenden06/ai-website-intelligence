@@ -34,48 +34,55 @@ export default async function DashboardPage() {
     return acc + (results?.issues || 0)
   }, 0) || 0
 
+  const statusLabels: Record<string, string> = {
+    completed: "Termine",
+    analyzing: "En cours",
+    error: "Erreur",
+    pending: "En attente",
+  }
+
   return (
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Websites</CardTitle>
+            <CardTitle className="text-sm font-medium">Total sites web</CardTitle>
             <Globe className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalWebsites}</div>
-            <p className="text-xs text-muted-foreground">Sites being monitored</p>
+            <p className="text-xs text-muted-foreground">Sites surveilles</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Analyses Completed</CardTitle>
+            <CardTitle className="text-sm font-medium">Analyses terminees</CardTitle>
             <CheckCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{completedAnalyses}</div>
-            <p className="text-xs text-muted-foreground">Total analyses run</p>
+            <p className="text-xs text-muted-foreground">Analyses effectuees</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Average Score</CardTitle>
+            <CardTitle className="text-sm font-medium">Score moyen</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{Math.round(averageScore)}</div>
-            <p className="text-xs text-muted-foreground">Out of 100</p>
+            <p className="text-xs text-muted-foreground">Sur 100</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Issues Found</CardTitle>
+            <CardTitle className="text-sm font-medium">Problemes detectes</CardTitle>
             <AlertTriangle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{issuesFound}</div>
-            <p className="text-xs text-muted-foreground">Across all sites</p>
+            <p className="text-xs text-muted-foreground">Sur tous les sites</p>
           </CardContent>
         </Card>
       </div>
@@ -84,13 +91,13 @@ export default async function DashboardPage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
-            <CardTitle>Your Websites</CardTitle>
-            <CardDescription>Manage and analyze your websites</CardDescription>
+            <CardTitle>Vos sites web</CardTitle>
+            <CardDescription>Gerez et analysez vos sites web</CardDescription>
           </div>
           <Button asChild>
             <Link href="/dashboard/websites/new">
               <Plus className="mr-2 h-4 w-4" />
-              Add Website
+              Ajouter un site
             </Link>
           </Button>
         </CardHeader>
@@ -98,14 +105,14 @@ export default async function DashboardPage() {
           {totalWebsites === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <Globe className="mb-4 h-12 w-12 text-muted-foreground/50" />
-              <h3 className="mb-2 text-lg font-semibold">No websites yet</h3>
+              <h3 className="mb-2 text-lg font-semibold">Aucun site web</h3>
               <p className="mb-4 text-sm text-muted-foreground">
-                Add your first website to start getting AI-powered insights.
+                Ajoutez votre premier site pour commencer a obtenir des insights IA.
               </p>
               <Button asChild>
                 <Link href="/dashboard/websites/new">
                   <Plus className="mr-2 h-4 w-4" />
-                  Add Your First Website
+                  Ajouter votre premier site
                 </Link>
               </Button>
             </div>
@@ -137,10 +144,10 @@ export default async function DashboardPage() {
                               : "bg-gray-100 text-gray-700"
                       }`}
                     >
-                      {website.status}
+                      {statusLabels[website.status] || website.status}
                     </span>
                     <Button variant="outline" size="sm" asChild>
-                      <Link href={`/dashboard/websites/${website.id}`}>View Details</Link>
+                      <Link href={`/dashboard/websites/${website.id}`}>Voir les details</Link>
                     </Button>
                   </div>
                 </div>

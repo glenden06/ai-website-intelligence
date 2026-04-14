@@ -15,7 +15,7 @@ export function DeleteWebsiteButton({ websiteId }: DeleteWebsiteButtonProps) {
   const router = useRouter()
 
   const handleDelete = async () => {
-    if (!confirm("Are you sure you want to delete this website? This action cannot be undone.")) {
+    if (!confirm("Etes-vous sur de vouloir supprimer ce site ? Cette action est irreversible.")) {
       return
     }
 
@@ -41,7 +41,7 @@ export function DeleteWebsiteButton({ websiteId }: DeleteWebsiteButtonProps) {
       ) : (
         <Trash2 className="h-4 w-4 text-destructive" />
       )}
-      <span className="sr-only">Delete website</span>
+      <span className="sr-only">Supprimer le site</span>
     </Button>
   )
 }

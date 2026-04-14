@@ -5,56 +5,56 @@ import Link from "next/link"
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Perfect for trying out WebIntel AI",
+    name: "Gratuit",
+    price: "0€",
+    period: "pour toujours",
+    description: "Parfait pour essayer WebIntel AI",
     features: [
-      "1 website",
-      "Weekly analysis",
-      "Basic UX insights",
-      "Bug detection",
-      "Email reports",
+      "1 site web",
+      "Analyse hebdomadaire",
+      "Insights UX de base",
+      "Detection de bugs",
+      "Rapports par email",
     ],
-    cta: "Get Started",
+    cta: "Commencer",
     href: "/auth/sign-up",
     popular: false,
   },
   {
     name: "Pro",
-    price: "$29",
-    period: "per month",
-    description: "For growing businesses and teams",
+    price: "29€",
+    period: "par mois",
+    description: "Pour les entreprises en croissance",
     features: [
-      "10 websites",
-      "Daily analysis",
-      "Advanced UX insights",
-      "Bug detection",
-      "Competitive analysis",
-      "AI recommendations",
-      "Priority support",
-      "API access",
+      "10 sites web",
+      "Analyse quotidienne",
+      "Insights UX avances",
+      "Detection de bugs",
+      "Analyse concurrentielle",
+      "Recommandations IA",
+      "Support prioritaire",
+      "Acces API",
     ],
-    cta: "Start Free Trial",
+    cta: "Essai gratuit",
     href: "/auth/sign-up?plan=pro",
     popular: true,
   },
   {
-    name: "Enterprise",
-    price: "$99",
-    period: "per month",
-    description: "For large organizations",
+    name: "Entreprise",
+    price: "99€",
+    period: "par mois",
+    description: "Pour les grandes organisations",
     features: [
-      "Unlimited websites",
-      "Real-time analysis",
-      "Full feature access",
-      "Custom integrations",
-      "Dedicated support",
-      "SLA guarantee",
-      "Custom reporting",
-      "Team collaboration",
+      "Sites web illimites",
+      "Analyse en temps reel",
+      "Acces complet",
+      "Integrations personnalisees",
+      "Support dedie",
+      "Garantie SLA",
+      "Rapports personnalises",
+      "Collaboration d'equipe",
     ],
-    cta: "Contact Sales",
+    cta: "Contacter les ventes",
     href: "/auth/sign-up?plan=enterprise",
     popular: false,
   },
@@ -66,10 +66,10 @@ export function Pricing() {
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-16 max-w-2xl text-center">
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            Simple, Transparent Pricing
+            Tarification simple et transparente
           </h2>
           <p className="text-pretty text-lg text-muted-foreground">
-            Start free and scale as you grow. No hidden fees, cancel anytime.
+            Commencez gratuitement et evoluez selon vos besoins. Pas de frais caches, annulation a tout moment.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                  Most Popular
+                  Le plus populaire
                 </div>
               )}
               <CardHeader>
